@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Profiles</title>
+</head>
+<body>
+<h1>Welcome to Blog</h1>
+<a href="/profiles/create">Create New Profile</a>
+<div th:if="${profiles.size() == 0}">
+    <p>No profiles found.</p>
+</div>
+<div th:if="${profiles.size() > 0}">
+    <ul>
+        <li th:each="profile : ${profiles}">
+            <img th:src="@{/uploads/{file}(file=${profile.imageFiled})}" alt="Profile Image" />
+            <p th:text="${profile.profileContents}"></p>
+            <p th:text="${profile.techStack}"></p>
+            <p th:text="${profile.experiences}"></p>
+            <a th:href="${profile.urlLink}" th:text="${profile.urlLink}"></a>
+        </li>
+    </ul>
+</div>
+</body>
+</html>

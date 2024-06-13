@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to Blog</title>
+    <style>
+        .profile-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .profile-container img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin-right: 20px;
+        }
+        .profile-details {
+            max-width: 500px;
+        }
+        .profile-details h2 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+        .profile-details p {
+            margin: 5px 0;
+        }
+        .profile-details a {
+            color: #3498db;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<h1>Welcome to Blog</h1>
+<a href="/profiles/create">Create New Profile</a>
+<div th:each="profile : ${profiles}" class="profile-container">
+    <img th:src="@{'/uploads/' + ${profile.imageFiled}}" alt="Profile Image"/>
+    <div class="profile-details">
+        <h2 th:text="${profile.profileContents}"></h2>
+        <p th:text="${profile.techStack}"></p>
+        <p th:text="${profile.experiences}"></p>
+        <a th:href="${profile.urlLink}" th:text="${profile.urlLink}"></a>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Profile</title>
+</head>
+<body>
+<h1>Create Profile</h1>
+<form action="#" th:action="@{/profiles/save}" th:object="${profile}" method="post" enctype="multipart/form-data">
+    <label for="profileContents">Profile Contents</label>
+    <input type="text" id="profileContents" name="profileContents" th:field="*{profileContents}" />
+
+    <label for="techStack">Tech Stack</label>
+    <input type="text" id="techStack" name="techStack" th:field="*{techStack}" />
+
+    <label for="experiences">Experiences</label>
+    <textarea id="experiences" name="experiences" th:field="*{experiences}"></textarea>
+
+    <label for="urlLink">Profile URL</label>
+    <input type="text" id="urlLink" name="urlLink" th:field="*{urlLink}" />
+
+    <label for="file">Profile Image</label>
+    <input type="file" id="file" name="file" />
+
+    <button type="submit">Save Profile</button>
+</form>
+</body>
+</html>
